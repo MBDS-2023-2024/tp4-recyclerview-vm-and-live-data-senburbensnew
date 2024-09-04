@@ -8,13 +8,9 @@ import org.mbds.unice.github.R
 import org.mbds.unice.github.data.model.User
 import org.mbds.unice.github.ui.utils.UserDiffCallback
 
-class UserListAdapter(
-    private val callback: Listener
-) : RecyclerView.Adapter<ListUserViewHolder>() {
-
+class UserListAdapter(private val callback: Listener) : RecyclerView.Adapter<ListUserViewHolder>() {
     // Permet de gérer la mise à jour de la liste de données
-    private val mDiffer: AsyncListDiffer<User> =
-        AsyncListDiffer(this, UserDiffCallback())
+    private val mDiffer: AsyncListDiffer<User> = AsyncListDiffer(this, UserDiffCallback())
 
     interface Listener {
         fun onClickDelete(user: User)
