@@ -1,0 +1,16 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Background Circle -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#E0E0E0" /> <!-- Light gray color for the background -->
+        </shape>
+    </item>
+
+    <!-- User Icon (built-in Android person icon) -->
+    <item>
+        <bitmap
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:gravity="center"
+            android:tint="#757575" /> <!-- Dark gray color for the user icon -->
+    </item>
+</layer-list>

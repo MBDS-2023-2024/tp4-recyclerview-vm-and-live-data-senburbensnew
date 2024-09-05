@@ -7,34 +7,34 @@ object FakeApiServiceGenerator {
 
     @JvmField
     var FAKE_USERS = mutableListOf(
-        User("001", "Jake", "https://api.adorable.io/AVATARS/512/1.png"),
-        User("002", "Paul", "https://api.adorable.io/AVATARS/512/2.png"),
-        User("003", "Phil", "https://api.adorable.io/AVATARS/512/3.png"),
-        User("004", "Guillaume", "https://api.adorable.io/AVATARS/512/4.png"),
-        User("005", "Francis", "https://api.adorable.io/AVATARS/512/5.png"),
-        User("006", "George", "https://api.adorable.io/AVATARS/512/6.png"),
-        User("007", "Louis", "https://api.adorable.io/AVATARS/512/7.png"),
-        User("008", "Mateo", "https://api.adorable.io/AVATARS/512/8.png"),
-        User("009", "April", "https://api.adorable.io/AVATARS/512/9.png"),
-        User("010", "Louise", "https://api.adorable.io/AVATARS/512/10.png"),
-        User("011", "Elodie", "https://api.adorable.io/AVATARS/512/11.png"),
-        User("012", "Helene", "https://api.adorable.io/AVATARS/512/12.png"),
-        User("013", "Fanny", "https://api.adorable.io/AVATARS/512/13.png"),
-        User("014", "Laura", "https://api.adorable.io/AVATARS/512/14.png"),
-        User("015", "Gertrude", "https://api.adorable.io/AVATARS/512/15.png"),
-        User("016", "Chloé", "https://api.adorable.io/AVATARS/512/16.png"),
-        User("017", "April", "https://api.adorable.io/AVATARS/512/17.png"),
-        User("018", "Marie", "https://api.adorable.io/AVATARS/512/18.png"),
-        User("019", "Henri", "https://api.adorable.io/AVATARS/512/19.png"),
-        User("020", "Rémi", "https://api.adorable.io/AVATARS/512/20.png")
+        User("001", "Jake", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("002", "Paul", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("003", "Phil", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("004", "Guillaume", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("005", "Francis", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("006", "George", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("007", "Louis", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("008", "Mateo", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("009", "April", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("010", "Louise", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("011", "Elodie", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("012", "Helene", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("013", "Fanny", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("014", "Laura", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("015", "Gertrude", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("016", "Chloé", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("017", "April", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("018", "Marie", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("019", "Henri", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("020", "Rémi", "https://xsgames.co/randomusers/avatar.php?g=male")
     )
 
     @JvmField
     var FAKE_USERS_RANDOM = Arrays.asList(
-        User("021", "Lea", "https://api.adorable.io/AVATARS/512/21.png"),
-        User("022", "Geoffrey", "https://api.adorable.io/AVATARS/512/22.png"),
-        User("023", "Simon", "https://api.adorable.io/AVATARS/512/23.png"),
-        User("024", "André", "https://api.adorable.io/AVATARS/512/24.png"),
-        User("025", "Leopold", "https://api.adorable.io/AVATARS/512/25.png")
+        User("021", "Lea", "https://xsgames.co/randomusers/avatar.php?g=female"),
+        User("022", "Geoffrey", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("023", "Simon", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("024", "André", "https://xsgames.co/randomusers/avatar.php?g=male"),
+        User("025", "Leopold", "https://xsgames.co/randomusers/avatar.php?g=male")
     )
 }

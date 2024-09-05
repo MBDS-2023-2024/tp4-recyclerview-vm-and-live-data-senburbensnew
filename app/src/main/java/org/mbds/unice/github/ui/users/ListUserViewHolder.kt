@@ -5,6 +5,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import org.mbds.unice.github.R
 import org.mbds.unice.github.data.model.User
 
@@ -15,9 +16,11 @@ class ListUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     private val deleteButton: ImageButton = itemView.findViewById(R.id.item_list_user_delete_button)
 
     fun bind(user: User, callback: UserListAdapter.Listener) {
-        // TODO : Utiliser une librairie pour charger l'image (glide, coil, )
+        avatar.load(user.avatarUrl) {
+            placeholder(R.drawable.ic_placeholder_avatar)
+            error(R.drawable.ic_placeholder_avatar)
+        }
         username.text = user.login
         deleteButton.setOnClickListener { callback.onClickDelete(user) }
     }
-
 }

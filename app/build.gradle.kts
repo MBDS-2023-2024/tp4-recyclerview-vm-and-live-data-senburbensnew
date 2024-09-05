@@ -4,6 +4,9 @@ plugins {
 }
 
 android {
+    buildFeatures {
+        viewBinding = true
+    }
     namespace = "org.mbds.unice.github"
     compileSdk = 34
 
@@ -36,7 +39,7 @@ android {
 }
 
 dependencies {
-
+    implementation(libs.coil)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
