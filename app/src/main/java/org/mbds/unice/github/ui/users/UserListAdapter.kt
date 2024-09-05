@@ -1,5 +1,6 @@
 package org.mbds.unice.github.ui.users
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -34,6 +35,6 @@ class UserListAdapter(private val callback: Listener) : RecyclerView.Adapter<Lis
 
     // PUBLIC API ---
     fun updateList(newList: List<User>) {
-        mDiffer.submitList(newList)
+        mDiffer.submitList(ArrayList(newList))
     }
 }

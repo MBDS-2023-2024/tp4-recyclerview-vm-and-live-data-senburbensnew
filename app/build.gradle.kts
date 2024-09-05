@@ -4,9 +4,6 @@ plugins {
 }
 
 android {
-    buildFeatures {
-        viewBinding = true
-    }
     namespace = "org.mbds.unice.github"
     compileSdk = 34
 
@@ -36,9 +33,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.livedata)
     implementation(libs.coil)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

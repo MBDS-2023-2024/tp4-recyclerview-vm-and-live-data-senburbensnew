@@ -7,7 +7,6 @@ import org.mbds.unice.github.data.model.User
 import org.mbds.unice.github.data.repository.UserRepository
 import org.mbds.unice.github.di.Injection
 
-
 class UserViewModel : ViewModel() {
     // On a besoin d'instancier le repository une fois (cf. Singleton)
     private val userRepository: UserRepository = Injection.getRepository()

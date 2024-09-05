@@ -4,7 +4,6 @@ import org.mbds.unice.github.data.model.User
 import java.util.*
 
 object FakeApiServiceGenerator {
-
     @JvmField
     var FAKE_USERS = mutableListOf(
         User("001", "Jake", "https://xsgames.co/randomusers/avatar.php?g=male"),

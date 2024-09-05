@@ -17,8 +17,8 @@ class ListUserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(user: User, callback: UserListAdapter.Listener) {
         avatar.load(user.avatarUrl) {
-            placeholder(R.drawable.ic_placeholder_avatar)
-            error(R.drawable.ic_placeholder_avatar)
+            placeholder(R.drawable.avatar_default)
+            error(R.drawable.avatar_error)
         }
         username.text = user.login
         deleteButton.setOnClickListener { callback.onClickDelete(user) }
