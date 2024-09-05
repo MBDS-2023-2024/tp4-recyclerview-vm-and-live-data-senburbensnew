@@ -1,6 +1,9 @@
 package org.mbds.unice.github.ui.users
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
@@ -45,12 +48,28 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
     private fun configureFab() {
         fab = findViewById(R.id.activity_list_user_fab)
         fab.setOnClickListener {
-            TODO("Ajouter un utilisateur aléatoire")
+            viewModel.generateRandomUser()
         }
     }
 
     override fun onClickDelete(user: User) {
-        TODO("Ajouter des logs pour tracer les actions de l'utilisateur")
-        TODO("Ajouter une boite de dialogue pour confirmer la suppression et supprimer l'utilisateur si l'utilisateur confirme")
+        Log.d("ListUserActivity", "Attempting to delete user: ${user.login}")
+
+        AlertDialog.Builder(this)
+            .setTitle("Delete User")
+            .setMessage("Are you sure you want to delete ${user.login}?")
+            .setPositiveButton("Yes") { dialog, _ ->
+                deleteUser(user)
+                dialog.dismiss()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+
+    private fun deleteUser(user: User) {
+        viewModel.deleteUser(user)
+        Toast.makeText(this, "User ${user.login} deleted", Toast.LENGTH_SHORT).show()
     }
 }
