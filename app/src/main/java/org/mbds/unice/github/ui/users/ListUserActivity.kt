@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.SearchView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -37,7 +38,7 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu) // Ensure this matches your combined XML file name
+        menuInflater.inflate(R.menu.menu, menu)
 
         val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
         val searchView = searchItem?.actionView as? SearchView
@@ -47,16 +48,17 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
                 return false
             }
 
+            // @SuppressLint("NotifyDataSetChanged")
+            @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextChange(newText: String?): Boolean {
-                // Filter the user list based on search input
-                // userAdapter.filter.filter(newText)
+                adapter.updateList(viewModel.searchUserByUsername(newText))
+                adapter.notifyDataSetChanged()
                 return true
             }
         })
 
         return true
     }
-
 
     // Handle menu item clicks
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -139,6 +141,7 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
             .setNegativeButton("No") { dialog, _ ->
                 dialog.dismiss()
             }
+            .setIcon(R.drawable.ic_delete_user_dialog_24dp)
             .show()
     }
 

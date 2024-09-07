@@ -49,4 +49,9 @@ class UserViewModel : ViewModel() {
         userRepository.filterUsersByStatus(active)
         refresh()
     }
+
+    fun searchUserByUsername(newText: String?): List<User> {
+        val result = userRepository.searchUserByUsername(newText)
+        return result
+    }
 }

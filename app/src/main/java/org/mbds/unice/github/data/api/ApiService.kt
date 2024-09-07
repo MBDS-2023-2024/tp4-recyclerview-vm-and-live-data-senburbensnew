@@ -9,4 +9,5 @@ interface ApiService {
     fun sortUsersByName(ascending: Boolean)
     fun sortUsersByDate(ascending: Boolean)
     fun filterUsersByStatus(active: Boolean)
+    fun searchUserByUsername(newText: String?): List<User>
 }

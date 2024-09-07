@@ -29,4 +29,8 @@ class UserRepository(
     fun filterUsersByStatus(active: Boolean) {
         apiService.filterUsersByStatus(active)
     }
+
+    fun searchUserByUsername(newText: String?): List<User> {
+        return apiService.searchUserByUsername(newText)
+    }
 }

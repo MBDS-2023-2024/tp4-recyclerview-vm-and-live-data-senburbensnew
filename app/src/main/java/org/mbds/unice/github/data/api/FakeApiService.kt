@@ -64,4 +64,16 @@ class FakeApiService : ApiService {
         _users.clear()
         _users.addAll(sortedList)
     }
+
+    override fun searchUserByUsername(newText: String?): List<User> {
+        val filteredList = if (newText.isNullOrEmpty()) {
+            _users
+        } else {
+            _users.filter { user ->
+                user.login.contains(newText, ignoreCase = true)
+            }
+        }
+        return filteredList
+    }
+
 }
