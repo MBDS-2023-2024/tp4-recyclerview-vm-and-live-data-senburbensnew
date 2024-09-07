@@ -34,4 +34,19 @@ class UserViewModel : ViewModel() {
         userRepository.deleteUser(user)
         refresh()
     }
+
+    fun sortUsersByName(ascending: Boolean) {
+        userRepository.sortUsersByName(ascending)
+        refresh()
+    }
+
+    fun sortUsersByDate(ascending: Boolean) {
+        userRepository.sortUsersByDate(ascending)
+        refresh()
+    }
+
+    fun filterUsersByStatus(active: Boolean) {
+        userRepository.filterUsersByStatus(active)
+        refresh()
+    }
 }

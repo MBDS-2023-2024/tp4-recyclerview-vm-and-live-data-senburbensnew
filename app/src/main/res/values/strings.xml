@@ -4,4 +4,12 @@
     <string name="todo2">TODO</string>
     <string name="textview">TextView</string>
     <string name="todo3">TODO</string>
+    <string name="trier_par_date_d_croissant">Trier par date (décroissant)</string>
+    <string name="afficher_les_d_sactiv_s_avant">Afficher les désactivés avant</string>
+    <string name="afficher_les_activ_s_avant">Afficher les activés avant</string>
+    <string name="trier_par_date_croissant">Trier par date (croissant)</string>
+    <string name="trier_par_nom_z_a">Trier par nom (Z-A)</string>
+    <string name="trier_par_nom_a_z">Trier par nom (A-Z)</string>
+    <string name="search">Search</string>
+    <string name="sort">Sort</string>
 </resources>

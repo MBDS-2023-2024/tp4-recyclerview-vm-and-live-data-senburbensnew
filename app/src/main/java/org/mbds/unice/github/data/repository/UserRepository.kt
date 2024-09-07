@@ -17,4 +17,16 @@ class UserRepository(
     fun deleteUser(user: User) {
         apiService.deleteUser(user)
     }
+
+    fun sortUsersByName(ascending: Boolean) {
+        apiService.sortUsersByName(ascending)
+    }
+
+    fun sortUsersByDate(ascending: Boolean) {
+        apiService.sortUsersByDate(ascending)
+    }
+
+    fun filterUsersByStatus(active: Boolean) {
+        apiService.filterUsersByStatus(active)
+    }
 }

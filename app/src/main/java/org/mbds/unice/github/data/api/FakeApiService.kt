@@ -34,4 +34,34 @@ class FakeApiService : ApiService {
             it.active = !it.active
         }
     }
+
+    override fun sortUsersByName(ascending: Boolean) {
+        val sortedList = if (ascending) {
+            _users.sortedBy { it.login }
+        } else {
+            _users.sortedByDescending { it.login }
+        }
+        _users.clear()
+        _users.addAll(sortedList)
+    }
+
+    override fun sortUsersByDate(ascending: Boolean) {
+        val sortedList = if (ascending) {
+            _users.sortedBy { it.creationDate }
+        } else {
+            _users.sortedByDescending { it.creationDate }
+        }
+        _users.clear()
+        _users.addAll(sortedList)
+    }
+
+    override fun filterUsersByStatus(active: Boolean) {
+        val sortedList = if (active) {
+            _users.sortedBy { it.active }
+        } else {
+            _users.sortedByDescending { it.active }
+        }
+        _users.clear()
+        _users.addAll(sortedList)
+    }
 }

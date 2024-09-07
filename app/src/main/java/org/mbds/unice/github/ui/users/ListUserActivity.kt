@@ -3,7 +3,9 @@ package org.mbds.unice.github.ui.users
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.SearchView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -32,6 +34,77 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
         setContentView(R.layout.activity_list_user)
         configureFab()
         configureRecyclerView()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu) // Ensure this matches your combined XML file name
+
+        val searchItem: MenuItem? = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as? SearchView
+
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Filter the user list based on search input
+                // userAdapter.filter.filter(newText)
+                return true
+            }
+        })
+
+        return true
+    }
+
+
+    // Handle menu item clicks
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.sort_alpha_asc -> {
+                sortUsersByName(ascending = true)
+                true
+            }
+            R.id.sort_alpha_desc -> {
+                sortUsersByName(ascending = false)
+                true
+            }
+            R.id.sort_date_asc -> {
+                sortUsersByDate(ascending = true)
+                true
+            }
+            R.id.sort_date_desc -> {
+                sortUsersByDate(ascending = false)
+                true
+            }
+            R.id.sort_active -> {
+                filterUsersByStatus(active = true)
+                true
+            }
+            R.id.sort_inactive -> {
+                filterUsersByStatus(active = false)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun sortUsersByName(ascending: Boolean) {
+        viewModel.sortUsersByName(ascending)
+        adapter.notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun sortUsersByDate(ascending: Boolean) {
+        viewModel.sortUsersByDate(ascending)
+        adapter.notifyDataSetChanged()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun filterUsersByStatus(active: Boolean) {
+        viewModel.filterUsersByStatus(active)
+        adapter.notifyDataSetChanged()
     }
 
     override fun onResume() {
