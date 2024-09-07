@@ -29,6 +29,9 @@ class FakeApiService : ApiService {
      * Delete a [User] from the [FakeApiService.users] list.
      */
     override fun deleteUser(username: User) {
-        _users.remove(username)
+        val userToUpdate = _users.find { it.login == username.login }
+        userToUpdate?.let {
+            it.active = !it.active
+        }
     }
 }

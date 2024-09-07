@@ -53,6 +53,6 @@ class UserRepositoryTest {
     fun deleteUserWithSuccess() {
         val userToDelete = userRepository.getUsers()[0]
         userRepository.deleteUser(userToDelete)
-        Assert.assertFalse(userRepository.getUsers().contains(userToDelete))
+        Assert.assertFalse(userRepository.getUsers()[0].active)
     }
 }
