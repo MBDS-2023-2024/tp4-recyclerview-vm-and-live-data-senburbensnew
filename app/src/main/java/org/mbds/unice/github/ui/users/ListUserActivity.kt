@@ -5,20 +5,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.mbds.unice.github.R
 import org.mbds.unice.github.data.model.User
+import org.mbds.unice.github.databinding.ActivityListUserBinding
+import java.util.Locale
 
 class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
-    // TODO : Utiliser viewBinding
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var fab: FloatingActionButton
+    private lateinit var binding : ActivityListUserBinding
 
     // By lazy permet de faire du chargement parresseux,
     // L'adapteur sera crée au premier appel
@@ -32,7 +29,8 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list_user)
+        binding = ActivityListUserBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         configureFab()
         configureRecyclerView()
     }
@@ -60,7 +58,6 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
         return true
     }
 
-    // Handle menu item clicks
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.sort_alpha_asc -> {
@@ -115,30 +112,29 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
             adapter.updateList(it)
         }
     }
+
     private fun configureRecyclerView() {
-        recyclerView = findViewById(R.id.activity_list_user_rv)
-        recyclerView.adapter = adapter
+        binding.activityListUserRv.adapter = adapter
     }
 
     private fun configureFab() {
-        fab = findViewById(R.id.activity_list_user_fab)
-        fab.setOnClickListener {
+        binding.activityListUserFab.setOnClickListener {
             viewModel.generateRandomUser()
         }
     }
 
     override fun onClickDelete(user: User) {
-        Log.d("ListUserActivity", "Attempting to delete user: ${user.login}")
-        val action = if (user.active) "delete" else "restore"
+        Log.d("ListUserActivity", "Tentative de suppression de l'utilisateur : ${user.login}")
+        val action = if (user.active) "désactiver" else "restaurer"
 
         AlertDialog.Builder(this)
-            .setTitle("Delete User")
-            .setMessage("Are you sure you want to $action ${user.login}?")
-            .setPositiveButton("Yes") { dialog, _ ->
+            .setTitle("${action.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() }} utilisateur")
+            .setMessage("Voulez-vous $action ${user.login}?")
+            .setPositiveButton("Oui") { dialog, _ ->
                 deleteUser(user)
                 dialog.dismiss()
             }
-            .setNegativeButton("No") { dialog, _ ->
+            .setNegativeButton("Non") { dialog, _ ->
                 dialog.dismiss()
             }
             .setIcon(R.drawable.ic_delete_user_dialog_24dp)
