@@ -49,6 +49,7 @@ class ListUserActivity : AppCompatActivity(), UserListAdapter.Listener {
             // @SuppressLint("NotifyDataSetChanged")
             @SuppressLint("NotifyDataSetChanged")
             override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.searchInput = newText!!
                 adapter.updateList(viewModel.searchUserByUsername(newText))
                 adapter.notifyDataSetChanged()
                 return true

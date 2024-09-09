@@ -16,6 +16,8 @@ class UserViewModel : ViewModel() {
     private val _users: MutableLiveData<List<User>> = MutableLiveData()
     val users: LiveData<List<User>> = _users
 
+    public var searchInput : String = ""
+
     init {
         // On initialise la liste des utilisateurs à la création du ViewModel
         refresh()
@@ -27,27 +29,47 @@ class UserViewModel : ViewModel() {
 
     fun generateRandomUser() {
         userRepository.addRandomUser()
-        refresh()
+        if(searchInput.isNotEmpty()){
+            _users.value = searchUserByUsername(searchInput)
+        }else{
+            refresh()
+        }
     }
 
     fun deleteUser(user: User) {
         userRepository.deleteUser(user)
-        refresh()
+        if(searchInput.isNotEmpty()){
+            _users.value = searchUserByUsername(searchInput)
+        }else{
+            refresh()
+        }
     }
 
     fun sortUsersByName(ascending: Boolean) {
         userRepository.sortUsersByName(ascending)
-        refresh()
+        if(searchInput.isNotEmpty()){
+            _users.value = searchUserByUsername(searchInput)
+        }else{
+            refresh()
+        }
     }
 
     fun sortUsersByDate(ascending: Boolean) {
         userRepository.sortUsersByDate(ascending)
-        refresh()
+        if(searchInput.isNotEmpty()){
+            _users.value = searchUserByUsername(searchInput)
+        }else{
+            refresh()
+        }
     }
 
     fun filterUsersByStatus(active: Boolean) {
         userRepository.filterUsersByStatus(active)
-        refresh()
+        if(searchInput.isNotEmpty()){
+            _users.value = searchUserByUsername(searchInput)
+        }else{
+            refresh()
+        }
     }
 
     fun searchUserByUsername(newText: String?): List<User> {
